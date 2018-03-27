@@ -5,12 +5,9 @@ char ssid[] = "myNetwork";     //  your network SSID (name)
 char pass[] = "myPassword";   // your network password
 
 int status = WL_IDLE_STATUS;
-char servername[]="alexander-productions.de/mysql";  // remote server we will connect to
 
 // Initialize the client library
 WiFiClient client;
-
-byte mac[] = { 0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x01 }; // RESERVED MAC ADDRESS
 
 void setup() {
 	Serial.begin(115200);
@@ -22,20 +19,20 @@ void setup() {
   if ( status != WL_CONNECTED) {
     Serial.println("Couldn't get a wifi connection");
     delay(2000);
-		return; // Might be an infinite loop 
+		return; // Might be an infinite loop
   }
 }
 
 void loop(){
 
-	t = "TestID";
-	h = "TestNachmame";
+	a = "TestID";
+	b = "TestNachmame";
 
-	data = "temp1=" + t + "&hum1=" + h;
+	data = "value1=" + a + "&value2=" + b;
 
-	if (client.connect("www.*****.*************.com",80)) { // REPLACE WITH YOUR SERVER ADDRESS
+	if (client.connect("www.alexander-productions.de/mysql",80)) { // REPLACE WITH YOUR SERVER ADDRESS
 		client.println("POST /add.php HTTP/1.1");
-		client.println("Host: *****.*************.com"); // SERVER ADDRESS HERE TOO
+		client.println("Host: alexander-productions.de/mysql"); // SERVER ADDRESS HERE TOO
 		client.println("Content-Type: application/x-www-form-urlencoded");
 		client.print("Content-Length: ");
 		client.println(data.length());
