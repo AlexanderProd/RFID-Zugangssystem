@@ -9,6 +9,9 @@ int status = WL_IDLE_STATUS;
 // Initialize the client library
 WiFiClient client;
 
+//Defining Variables
+String data;
+
 void setup() {
 	Serial.begin(115200);
 	Serial.println("Attempting to connect to WPA network...");
@@ -25,8 +28,8 @@ void setup() {
 
 void loop(){
 
-	a = "TestID";
-	b = "TestNachmame";
+	String a = "TestID";
+	String b = "TestNachmame";
 
 	data = "value1=" + a + "&value2=" + b;
 
