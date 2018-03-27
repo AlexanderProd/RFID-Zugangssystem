@@ -17,18 +17,18 @@ int t = 0;	// TEMPERATURE VAR
 int h = 0;	// HUMIDITY VAR
 String data;
 
-void setup() {
+void setup() { 
 	Serial.begin(115200);
 
 	if (Ethernet.begin(mac) == 0) {
-		Serial.println("Failed to configure Ethernet using DHCP");
+		Serial.println("Failed to configure Ethernet using DHCP"); 
 	}
 
-	dht.begin();
+	dht.begin(); 
 	delay(10000); // GIVE THE SENSOR SOME TIME TO START
 
-	h = (int) dht.readHumidity();
-	t = (int) dht.readTemperature();
+	h = (int) dht.readHumidity(); 
+	t = (int) dht.readTemperature(); 
 
 	data = "";
 }
@@ -42,24 +42,24 @@ void loop(){
 		t = (int) dht.readTemperature();
 	}
 
-	t = "TestID";
-	h = "TestNachmame";
-
 	data = "temp1=" + t + "&hum1=" + h;
 
 	if (client.connect("www.*****.*************.com",80)) { // REPLACE WITH YOUR SERVER ADDRESS
-		client.println("POST /add.php HTTP/1.1");
+		client.println("POST /add.php HTTP/1.1"); 
 		client.println("Host: *****.*************.com"); // SERVER ADDRESS HERE TOO
-		client.println("Content-Type: application/x-www-form-urlencoded");
-		client.print("Content-Length: ");
-		client.println(data.length());
-		client.println();
-		client.print(data);
-	}
+		client.println("Content-Type: application/x-www-form-urlencoded"); 
+		client.print("Content-Length: "); 
+		client.println(data.length()); 
+		client.println(); 
+		client.print(data); 
+	} 
 
-	if (client.connected()) {
+	if (client.connected()) { 
 		client.stop();	// DISCONNECT FROM THE SERVER
 	}
 
-	delay(10000); // WAIT FIVE MINUTES BEFORE SENDING AGAIN
+	delay(300000); // WAIT FIVE MINUTES BEFORE SENDING AGAIN
 }
+
+
+
