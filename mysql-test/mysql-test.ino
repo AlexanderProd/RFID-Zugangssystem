@@ -22,7 +22,7 @@ void setup() {
   if ( status != WL_CONNECTED) {
     Serial.println("Couldn't get a wifi connection");
     //delay(2000);
-		//return; // Might be an infinite loop
+		//return; // Might be an infinite loop 
   } else {
 		Serial.println("Connection established");
 	}
