@@ -42,10 +42,10 @@ void loop() {
   Serial.print("connecting to ");
   Serial.println(host);
 
-  ///
-  String a = "123456";
-  String b = "TestVorname";
-  String c = "TestNachmame";
+  /// Important Stuff
+  String a = "123456"; //ID 
+  String b = "TestVorname"; // Vorname werden in finaler Version evtl. nicht gebraucht 
+  String c = "TestNachmame"; // Nachname ""
   String data = "value1=" + a + "&value2=" + b + "&value3=" + c;
   ///
 
