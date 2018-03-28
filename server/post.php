@@ -1,4 +1,6 @@
 <?php
+include("time.php");
+
 $servername = "bernd-mysql.php-friends.de";
 $username = "521_admin";
 $password = "Cb&0fv";
@@ -17,15 +19,11 @@ echo "<br/>";
 $var1=$_POST["value1"];
 $var2=$_POST["value2"];
 $var3=$_POST["value3"];
+$var4=serverTime();
+echo $var4;
 
-echo $var1;
-echo "<br/>";
-echo $var2;
-echo "<br/>";
-echo $var3;
-
-$query = "INSERT INTO `accounts` (`id`,`firstName`, `lastName`)
-VALUES ('".$var1."','".$var2."','".$var3."')";
+$query = "INSERT INTO `accounts` (`id`,`firstName`, `lastName` , `checkInTime`)
+VALUES ('".$var1."','".$var2."','".$var3."','".$var4."')";
 
 if (mysqli_query($conn, $query)) {
 	echo "New record created successfully" . "<br />";

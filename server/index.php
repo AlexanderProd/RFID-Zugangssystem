@@ -15,23 +15,13 @@ echo "Connected successfully";
 echo "<br/>";
 
 
-#$insert = "INSERT INTO accounts (id, firstName, lastName)
-#VALUES ('3', 'John', 'Doe')";
-
-#if (mysqli_query($conn, $insert)) {
-#    echo "New record created successfully" . "<br />";
-#} else {
-#    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-#}
-
-
-$sql = "SELECT id, firstName, lastName FROM accounts";
+$sql = "SELECT id, firstName, lastName, checkInTime FROM accounts";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
-        echo "id: " . $row["id"]. " - Name: " . $row["firstName"]. " " . $row["lastName"]. "<br>";
+        echo "id: " . $row["id"]. " - Name: " . $row["firstName"]. " " . $row["lastName"]. " " . $row["checkInTime"]. "<br>";
     }
 } else {
     echo "0 results";
