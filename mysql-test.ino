@@ -23,11 +23,15 @@ void setup() {
     Serial.println("Couldn't get a wifi connection");
     delay(2000);
 		return; // Might be an infinite loop
-  }
+  } else {
+		Serial.println("Connection established");
+	}
 }
 
 void loop(){
 
+	// int a = 00001;
+	// int b = 99999;
 	String a = "TestID";
 	String b = "TestNachmame";
 
