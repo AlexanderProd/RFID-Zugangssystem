@@ -26,8 +26,8 @@ void setup() {
   status = WiFi.begin(ssid, pass);
   if ( status != WL_CONNECTED) {
     Serial.println("Couldn't get a wifi connection");
-    //delay(2000);
-		//return; // Might be an infinite loop 
+    delay(2000);
+		return; // Might be an infinite loop 
   } else {
 		Serial.println("Connection established");
 	}
@@ -43,7 +43,7 @@ void loop(){
 	data = "value1=" + a + "&value2=" + b;
 
 	if (client.connect("www.alexander-productions.de/mysql",80)) { // REPLACE WITH YOUR SERVER ADDRESS
-		client.println("POST /add.php HTTP/1.1");
+		client.println("POST /connect-test.php HTTP/1.1");
 		client.println("Host: alexander-productions.de/mysql"); // SERVER ADDRESS HERE TOO
 		client.println("Content-Type: application/x-www-form-urlencoded");
 		client.print("Content-Length: ");
@@ -57,5 +57,5 @@ void loop(){
 		client.stop();	// DISCONNECT FROM THE SERVER
 	}
 
-	delay(10000); // WAIT FIVE MINUTES BEFORE SENDING AGAIN
+	delay(20000); // WAIT FIVE MINUTES BEFORE SENDING AGAIN
 }
