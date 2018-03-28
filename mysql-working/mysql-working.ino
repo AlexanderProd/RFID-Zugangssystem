@@ -42,8 +42,13 @@ void loop() {
   Serial.print("connecting to ");
   Serial.println(host);
 
+  // Random Number
+  int randomInt = random(111111, 999999);
+  String randomString = String(randomInt);
+  Serial.println(randomString);
+  
   /// Important Stuff
-  String a = "123456"; //ID 
+  String a = randomString; //ID 
   String b = "TestVorname"; // Vorname werden in finaler Version evtl. nicht gebraucht 
   String c = "TestNachmame"; // Nachname ""
   String data = "value1=" + a + "&value2=" + b + "&value3=" + c;
