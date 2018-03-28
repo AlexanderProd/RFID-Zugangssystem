@@ -1,4 +1,9 @@
+#ifdef ESP8266
+#include <ESP8266WiFi.h>
+#else
 #include <WiFi.h>
+#endif
+#include <WiFiUdp.h>
 #include <SPI.h>
 
 char ssid[] = "FRITZ!Box 7430 BZ";     //  your network SSID (name)
