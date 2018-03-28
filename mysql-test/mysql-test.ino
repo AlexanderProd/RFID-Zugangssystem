@@ -31,6 +31,7 @@ void setup() {
   } else {
 		Serial.println("Connection established");
 	}
+  pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop(){
@@ -50,6 +51,7 @@ void loop(){
 		client.println(data.length());
 		client.println();
 		client.print(data);
+
     Serial.println("Sending to Database successful!");
 	}
 
