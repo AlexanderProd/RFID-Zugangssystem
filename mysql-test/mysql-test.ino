@@ -1,8 +1,8 @@
 #include <WiFi.h>
 #include <SPI.h>
 
-char ssid[] = "myNetwork";     //  your network SSID (name)
-char pass[] = "myPassword";   // your network password
+char ssid[] = "FRITZ!Box 7430 BZ";     //  your network SSID (name)
+char pass[] = "56330553737990937936";   // your network password
 
 int status = WL_IDLE_STATUS;
 
@@ -21,8 +21,8 @@ void setup() {
   status = WiFi.begin(ssid, pass);
   if ( status != WL_CONNECTED) {
     Serial.println("Couldn't get a wifi connection");
-    delay(2000);
-		return; // Might be an infinite loop
+    //delay(2000);
+		//return; // Might be an infinite loop
   } else {
 		Serial.println("Connection established");
 	}
@@ -45,6 +45,7 @@ void loop(){
 		client.println(data.length());
 		client.println();
 		client.print(data);
+    Serial.println("Sending to Database successful!");
 	}
 
 	if (client.connected()) {
