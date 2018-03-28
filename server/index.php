@@ -15,14 +15,14 @@ echo "Connected successfully";
 echo "<br/>";
 
 
-$insert = "INSERT INTO accounts (id, firstName, lastName)
-VALUES ('3', 'John', 'Doe')";
+#$insert = "INSERT INTO accounts (id, firstName, lastName)
+#VALUES ('3', 'John', 'Doe')";
 
-if (mysqli_query($conn, $insert)) {
-    echo "New record created successfully" . "<br />";
-} else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
+#if (mysqli_query($conn, $insert)) {
+#    echo "New record created successfully" . "<br />";
+#} else {
+#    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+#}
 
 
 $sql = "SELECT id, firstName, lastName FROM accounts";

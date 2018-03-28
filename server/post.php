@@ -14,15 +14,15 @@ if (!$conn) {
 echo "Connected successfully";
 echo "<br/>";
 
-$var1=$_GET["value1"];
-$var2=$_GET["value2"];
+$var1=$_POST["value1"];
+$var2=$_POST["value2"];
 
 echo $var1;
 echo "<br/>";
 echo $var2;
 echo "<br/>";
 
-$query = "INSERT INTO `accounts` (`id`, `firstName`)
+$query = "INSERT INTO `accounts` (`firstName`, `lastName`)
 VALUES ('".$var1."','".$var2."')";
 
 if (mysqli_query($conn, $query)) {

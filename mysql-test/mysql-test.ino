@@ -1,63 +1,72 @@
-#ifdef ESP8266
 #include <ESP8266WiFi.h>
-#else
-#include <WiFi.h>
-#endif
-#include <WiFiUdp.h>
-#include <SPI.h>
 
-char ssid[] = "FRITZ!Box 7430 BZ";     //  your network SSID (name)
-char pass[] = "56330553737990937936";   // your network password
+const char* ssid     = "FRITZ!Box 7430 BZ";
+const char* password = "56330553737990937936";
 
-int status = WL_IDLE_STATUS;
-
-// Initialize the client library
-WiFiClient client;
-
-//Defining Variables
-String data;
+const char* host = "alexander-productions.de";
 
 void setup() {
-	Serial.begin(115200);
-	Serial.println("Attempting to connect to WPA network...");
-  Serial.print("SSID: ");
+  Serial.begin(115200);
+  delay(10);
+
+  // We start by connecting to a WiFi network
+
+  Serial.println();
+  Serial.println();
+  Serial.print("Connecting to ");
   Serial.println(ssid);
 
-  status = WiFi.begin(ssid, pass);
-  if ( status != WL_CONNECTED) {
-    Serial.println("Couldn't get a wifi connection");
-    delay(2000);
-		return; // Might be an infinite loop 
-  } else {
-		Serial.println("Connection established");
-	}
-  pinMode(LED_BUILTIN, OUTPUT);
+  /* Explicitly set the ESP8266 to be a WiFi-client, otherwise, it by default,
+     would try to act as both a client and an access-point and could cause
+     network-issues with your other WiFi-devices on your WiFi-network. */
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
 }
 
-void loop(){
+int value = 0;
 
-	// int a = 00001;
-	// int b = 99999;
-	String a = "TestID";
-	String b = "TestNachmame";
+void loop() {
+  delay(5000);
+  ++value;
 
-	data = "value1=" + a + "&value2=" + b;
+  Serial.print("connecting to ");
+  Serial.println(host);
 
-	if (client.connect("www.alexander-productions.de/mysql",80)) { // REPLACE WITH YOUR SERVER ADDRESS
-		client.println("POST /connect-test.php HTTP/1.1");
-		client.println("Host: alexander-productions.de/mysql"); // SERVER ADDRESS HERE TOO
-		client.println("Content-Type: application/x-www-form-urlencoded");
-		client.print("Content-Length: ");
-		client.println(data.length());
-		client.println();
-		client.print(data);
+  ///
+  String a = "TestVorname";
+  String b = "TestNachmame";
+  String data = "value1=" + a + "&value2=" + b;
+  ///
 
+  // Use WiFiClient class to create TCP connections
+  WiFiClient client;
+  const int httpPort = 80;
+  if (!client.connect(host, httpPort)) {
+    Serial.println("connection failed");
+    return;
+  } else {
+    Serial.println("connection successful");
+    client.println("POST /mysql/post.php HTTP/1.1");
+    client.println("Host: alexander-productions.de"); // SERVER ADDRESS HERE TOO
+    client.println("Content-Type: application/x-www-form-urlencoded");
+    client.print("Content-Length: ");
+    client.println(data.length());
+    client.println();
+    client.print(data);
     Serial.println("Sending to Database successful!");
-	}
+  }
 
-	if (client.connected()) {
-		client.stop();	// DISCONNECT FROM THE SERVER
-	}
 
-	delay(20000); // WAIT FIVE MINUTES BEFORE SENDING AGAIN
+  Serial.println();
+  Serial.println("closing connection");
 }
