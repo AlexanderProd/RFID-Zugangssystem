@@ -16,14 +16,16 @@ echo "<br/>";
 
 $var1=$_POST["value1"];
 $var2=$_POST["value2"];
+$var3=$_POST["value3"];
 
 echo $var1;
 echo "<br/>";
 echo $var2;
 echo "<br/>";
+echo $var3;
 
-$query = "INSERT INTO `accounts` (`firstName`, `lastName`)
-VALUES ('".$var1."','".$var2."')";
+$query = "INSERT INTO `accounts` (`id`,`firstName`, `lastName`)
+VALUES ('".$var1."','".$var2."','".$var3."')";
 
 if (mysqli_query($conn, $query)) {
 	echo "New record created successfully" . "<br />";

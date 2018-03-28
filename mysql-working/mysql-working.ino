@@ -43,9 +43,10 @@ void loop() {
   Serial.println(host);
 
   ///
-  String a = "TestVorname";
-  String b = "TestNachmame";
-  String data = "value1=" + a + "&value2=" + b;
+  String a = "123456";
+  String b = "TestVorname";
+  String c = "TestNachmame";
+  String data = "value1=" + a + "&value2=" + b + "&value3=" + c;
   ///
 
   // Use WiFiClient class to create TCP connections
