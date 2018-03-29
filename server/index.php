@@ -15,13 +15,13 @@ echo "Connected successfully";
 echo "<br/>";
 
 
-$sql = "SELECT id, firstName, lastName, checkInTime FROM accounts";
+$sql = "SELECT id, firstName, lastName, date, time FROM accounts";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
-        echo "id: " . $row["id"]. " - Name: " . $row["firstName"]. " " . $row["lastName"]. " " . $row["checkInTime"]. "<br>";
+        echo "id: " . $row["id"]. " - Name: " . $row["firstName"]. " " . $row["lastName"]. " " . $row["date"]. " " . $row["time"]. "<br>";
     }
 } else {
     echo "0 results";

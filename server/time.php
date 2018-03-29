@@ -15,6 +15,6 @@ function serverTime($string = null){
   }
 }
 
-$date = serverTime();
+$date = serverTime(time);
 echo $date . "<br/>";
 ?>
