@@ -15,13 +15,29 @@ if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
 }
 echo "Connected successfully" . "<br/>";
+?>
 
 
-$result = mysqli_list_tables($dbname);
-$num_rows = mysqli_num_rows($result);
-for ($i = 0; $i < $num_rows; $i++) {
-    echo "Tabelle: ", mysqli_tablename($result, $i), "\n";
+<?php
+$dbname = '521_rfid_test';
+
+if (!mysql_connect('bernd-mysql.php-friends.de', '521_admin', 'Cb&0fv')) {
+    echo 'Konnte nicht zu mysql verbinden';
+    exit;
 }
 
-mysqli_free_result($result);
+$sql = "SHOW TABLES FROM $dbname";
+$result = mysql_query($sql);
+
+if (!$result) {
+    echo "DB Fehler, konnte Tabellen nicht auflisten\n";
+    echo 'MySQL Fehler: ' . mysql_error();
+    exit;
+}
+
+while ($row = mysql_fetch_row($result)) {
+    echo "{$row[0]}\n <br/>";
+}
+
+mysql_free_result($result);
 ?>
