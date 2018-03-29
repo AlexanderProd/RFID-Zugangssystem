@@ -7,5 +7,5 @@ function serverTime(){
 }
 
 $date = serverTime();
-echo $date;
+echo $date . "<br/>";
 ?>
