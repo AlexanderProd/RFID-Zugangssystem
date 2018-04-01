@@ -7,10 +7,10 @@ const char* host = "alexander-productions.de";
 
 void setup() {
   Serial.begin(115200);
+  pinMode(LED_BUILTIN, OUTPUT);
   delay(10);
 
   // We start by connecting to a WiFi network
-
   Serial.println();
   Serial.println();
   Serial.print("Connecting to ");
@@ -52,7 +52,6 @@ void loop() {
   String b = "TestVorname"; // Vorname werden in finaler Version evtl. nicht gebraucht 
   String c = "TestNachmame"; // Nachname ""
   String data = "value1=" + a + "&value2=" + b + "&value3=" + c;
-  ///
 
   // Use WiFiClient class to create TCP connections
   WiFiClient client;
@@ -70,6 +69,9 @@ void loop() {
     client.println();
     client.print(data);
     Serial.println("Sending to Database successful!");
+    digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+    delay(1000);                       // wait for a second
+    digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
   }
 
 
