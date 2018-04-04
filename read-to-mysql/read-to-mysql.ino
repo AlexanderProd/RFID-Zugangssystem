@@ -109,15 +109,14 @@ void loop() {
   }
 
   String a = String((char*)buffer1);
-  Serial.print(a);
   //PRINT FIRST NAME
-  /*for (uint8_t i = 0; i < 16; i++)
+  for (uint8_t i = 0; i < 16; i++)
   {
     if (buffer1[i] != 32)
     {
       Serial.write(buffer1[i]);
     }
-  }*/
+  }
   Serial.print(" ");
 
   //---------------------------------------- GET LAST NAME
@@ -140,14 +139,14 @@ void loop() {
   }
 
   String b = String((char*)buffer2);
-  Serial.print(b);
   //PRINT LAST NAME
-  /*for (uint8_t i = 0; i < 16; i++) {
+  for (uint8_t i = 0; i < 16; i++) {
     Serial.write(buffer2[i] );
-  }*/
+  }
 
 
   //---------------------------------------- Send to mysql
+  serial.println(a);
   String data = "value1=" + a + "&value2=" + b;
 
   // Use WiFiClient class to create TCP connections
