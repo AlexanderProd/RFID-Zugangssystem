@@ -108,7 +108,7 @@ void loop() {
     return;
   }
 
-  String a = buffer1;
+  String a = String((char*)buffer1);
   //PRINT FIRST NAME
   for (uint8_t i = 0; i < 16; i++)
   {
@@ -138,7 +138,7 @@ void loop() {
     return;
   }
 
-  String b = buffer2;
+  String b = String((char*)buffer2);
   //PRINT LAST NAME
   for (uint8_t i = 0; i < 16; i++) {
     Serial.write(buffer2[i] );
@@ -172,7 +172,7 @@ void loop() {
 
   Serial.println();
   Serial.println("closing connection");
-  
+
 
   //----------------------------------------
 
