@@ -1,7 +1,9 @@
 #include <ESP8266WiFi.h>
 
-const char* ssid     = "FRITZ!Box 7430 BZ";
-const char* password = "56330553737990937936";
+//const char* ssid     = "FRITZ!Box 7430 BZ";
+//const char* password = "56330553737990937936";
+const char* ssid     = "Alexanders iPhone";
+const char* password = "123test456";
 
 const char* host = "alexander-productions.de";
 
