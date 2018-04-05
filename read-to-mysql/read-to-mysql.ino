@@ -2,10 +2,10 @@
 #include <MFRC522.h>
 #include <ESP8266WiFi.h>
 
-//const char* ssid     = "FRITZ!Box 7430 BZ";
-//const char* password = "56330553737990937936";
-const char* ssid     = "Alexanders iPhone";
-const char* password = "123test456";
+const char* ssid     = "FRITZ!Box 7430 BZ";
+const char* password = "56330553737990937936";
+//const char* ssid     = "Alexanders iPhone";
+//const char* password = "123test456";
 
 const char* host = "alexander-productions.de";
 
@@ -86,7 +86,7 @@ void loop() {
 
   //-------------------------------------------
 
-  Serial.print(F("Name: "));
+  //Serial.print(F("Name: "));
 
   byte buffer1[18]; //it is 18 bytes long. The array has 18 elements
 
@@ -146,7 +146,8 @@ void loop() {
 
 
   //---------------------------------------- Send to mysql
-  serial.println(a);
+  //Serial.println("Vorname: "+ a);
+  //Serial.println("Nachname: "+ b);
   String data = "value1=" + a + "&value2=" + b;
 
   // Use WiFiClient class to create TCP connections
@@ -178,7 +179,7 @@ void loop() {
 
   Serial.println(F("\n**End Reading**\n"));
 
-  delay(1000); //change value if you want to read cards faster
+  delay(500); //change value if you want to read cards faster
 
   mfrc522.PICC_HaltA();
   mfrc522.PCD_StopCrypto1();
