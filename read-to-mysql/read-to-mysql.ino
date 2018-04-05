@@ -138,11 +138,17 @@ void loop() {
     return;
   }
 
-  String b = String((char*)buffer2);
+  //String b = String((char*)buffer2);
+  char bChar[5];
   //PRINT LAST NAME
-  for (uint8_t i = 0; i < 16; i++) {
+  /*for (uint8_t i = 0; i < sizeof(buffer2); i++) { //i < 16
     Serial.write(buffer2[i] );
+  }*/
+  for (int i = 0; i < 5; i++) {
+    bChar[i] = buffer2[i];
   }
+  String b = String((char*)bChar);
+  Serial.println("String b: "+ b);
 
 
   //---------------------------------------- Send to mysql
