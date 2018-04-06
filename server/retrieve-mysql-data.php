@@ -16,16 +16,20 @@ if (!$conn) {
 }
 echo "Connected successfully" . "<br/>";
 
-//ID to Check
-$id = "000001";
+//Variables
+$id = "1";
+$firstName = "";
+$lastName = "";
 
 //Retrieve Data
 $query = "SELECT * FROM `acc_information` WHERE id = '$id';";
-$result = mysql_query($query);
+$result = mysqli_query($conn, $query);
 if (!$result) exit("The query did not succeded");
 else {
-    while ($row = mysql_fetch_array($result)) {
-        echo $row['value'];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $firstName = $row['firstName'];
+				$lastName = $row['lastName'];
     }
 }
+echo $lastName;
 ?>
