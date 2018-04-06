@@ -37,7 +37,7 @@ else {
 }
 
 // Insert Values into MySQL Database
-$query = "INSERT INTO `accounts` (`id`,`firstName`, `lastName` , `date` , `time`)
+$query = "INSERT INTO `logins` (`id`,`firstName`, `lastName` , `date` , `time`)
 VALUES ('".$id."','".$firstName."','".$lastName."','".$date."','".$time."')";
 
 // Debugging Feedback

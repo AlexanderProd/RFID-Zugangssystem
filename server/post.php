@@ -24,7 +24,7 @@ $var4=serverTime(date);
 $var5=serverTime(time);
 
 // Insert Values into MySQL Database
-$query = "INSERT INTO `accounts` (`id`,`firstName`, `lastName` , `date` , `time`)
+$query = "INSERT INTO `logins` (`id`,`firstName`, `lastName` , `date` , `time`)
 VALUES ('".$var1."','".$var2."','".$var3."','".$var4."','".$var5."')";
 
 // Debugging Feedback
