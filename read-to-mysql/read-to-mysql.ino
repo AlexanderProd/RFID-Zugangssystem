@@ -49,7 +49,7 @@ void setup() {
 int value = 0;
 
 void loop() {
-  delay(5000);
+  delay(1000); // Reading Speed (lower value = faster read but might write multiple entries into db) 
   ++value;
 
   //Serial.print("connecting to ");
@@ -108,15 +108,21 @@ void loop() {
     return;
   }
 
-  String a = String((char*)buffer1);
+  //String a = String((char*)buffer1);
   //PRINT FIRST NAME
-  for (uint8_t i = 0; i < 16; i++)
+  /*for (uint8_t i = 0; i < 16; i++)
   {
     if (buffer1[i] != 32)
     {
       Serial.write(buffer1[i]);
     }
+  }*/
+  char aChar[9];
+  for (int i = 0; i < 9; i++) {
+    aChar[i] = buffer1[i];
   }
+  String a = String((char*)aChar);
+  Serial.println("String a: "+ a);
   Serial.print(" ");
 
   //---------------------------------------- GET LAST NAME
@@ -172,9 +178,6 @@ void loop() {
     client.println();
     client.print(data);
     Serial.println("Sending to Database successful!");
-    digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-    delay(1000);                       // wait for a second
-    digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
   }
 
   Serial.println();
