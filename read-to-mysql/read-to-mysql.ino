@@ -118,7 +118,7 @@ void loop() {
     }
   }*/
   char aChar[9];
-  for (int i = 0; i < 9; i++) {
+  for (uint8_t i = 0; i < 9; i++) {
     aChar[i] = buffer1[i];
   }
   String a = String((char*)aChar);
@@ -150,7 +150,7 @@ void loop() {
   /*for (uint8_t i = 0; i < sizeof(buffer2); i++) { //i < 16
     Serial.write(buffer2[i] );
   }*/
-  for (int i = 0; i < 5; i++) {
+  for (int i = 0; i < 6; i++) {
     bChar[i] = buffer2[i];
   }
   String b = String((char*)bChar);
@@ -160,7 +160,9 @@ void loop() {
   //---------------------------------------- Send to mysql
   //Serial.println("Vorname: "+ a);
   //Serial.println("Nachname: "+ b);
-  String data = "value1=" + a + "&value2=" + b;
+  //String data = "value1=" + a + "&value2=" + b;
+  //String data = "value1=" + a;
+  String data = "value1=" + b;
 
   // Use WiFiClient class to create TCP connections
   WiFiClient client;
@@ -170,7 +172,7 @@ void loop() {
     return;
   } else {
     Serial.println("connection successful");
-    client.println("POST /mysql/post.php HTTP/1.1");
+    client.println("POST /mysql/post2.php HTTP/1.1");
     client.println("Host: alexander-productions.de"); // SERVER ADDRESS HERE TOO
     client.println("Content-Type: application/x-www-form-urlencoded");
     client.print("Content-Length: ");

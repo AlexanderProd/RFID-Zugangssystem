@@ -16,12 +16,16 @@ if (!$conn) {
 }
 echo "Connected successfully" . "<br/>";
 
+//Values getting send to server
+$id = $_POST["value1"];
+$date = serverTime(date);
+$time = serverTime(time);
+
 //Variables
-$id = "1";
 $firstName = "";
 $lastName = "";
 
-//Retrieve Data
+//Retrieve First and Last Name from DB depending on ID
 $query = "SELECT * FROM `acc_information` WHERE id = '$id';";
 $result = mysqli_query($conn, $query);
 if (!$result) exit("The query did not succeded");
@@ -31,5 +35,18 @@ else {
 				$lastName = $row['lastName'];
     }
 }
-echo $lastName;
+
+// Insert Values into MySQL Database
+$query = "INSERT INTO `accounts` (`id`,`firstName`, `lastName` , `date` , `time`)
+VALUES ('".$id."','".$firstName."','".$lastName."','".$date."','".$time."')";
+
+// Debugging Feedback
+if (mysqli_query($conn, $query)) {
+	echo "New record created successfully" . "<br />";
+} else {
+	echo "Error: " . $query . "<br>" . mysqli_error($conn);
+}
+
+//Close connection when done
+mysqli_close($conn);
 ?>
