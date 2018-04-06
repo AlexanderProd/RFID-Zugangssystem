@@ -49,7 +49,7 @@ void setup() {
 int value = 0;
 
 void loop() {
-  delay(1000); // Reading Speed (lower value = faster read but might write multiple entries into db) 
+  delay(500); // Reading Speed (lower value = faster read but might write multiple entries into db) 
   ++value;
 
   //Serial.print("connecting to ");
