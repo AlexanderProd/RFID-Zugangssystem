@@ -15,7 +15,7 @@ echo "Connected successfully";
 echo "<br/>";
 
 
-$sql = "SELECT id, firstName, lastName, date, time FROM accounts";
+$sql = "SELECT id, firstName, lastName, date, time FROM logins";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
