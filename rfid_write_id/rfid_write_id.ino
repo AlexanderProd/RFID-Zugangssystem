@@ -22,8 +22,8 @@
 #include <SPI.h>
 #include <MFRC522.h>
 
-#define RST_PIN         D3     // Configurable, see typical pin layout above
-#define SS_PIN          D8     // Configurable, see typical pin layout above
+#define RST_PIN         D3     // Configurable, see typical pin layout above !! on Arduino no D !!
+#define SS_PIN          D8     // Configurable, see typical pin layout above !! on Arduino no D !!
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance
 
@@ -31,7 +31,7 @@ void setup() {
   Serial.begin(115200);        // Initialize serial communications with the PC
   SPI.begin();               // Init SPI bus
   mfrc522.PCD_Init();        // Init MFRC522 card
-  Serial.println(F("Write personal data on a MIFARE PICC "));
+  Serial.println(F("Write 6 Digit ID on a MIFARE PICC "));
 }
 
 void loop() {
