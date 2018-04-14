@@ -172,7 +172,7 @@ void loop() {
     return;
   } else {
     Serial.println("connection successful");
-    client.println("POST /mysql/post.php HTTP/1.1");
+    client.println("POST /mysql/post2.php HTTP/1.1");
     client.println("Host: alexander-productions.de"); // SERVER ADDRESS HERE TOO
     client.println("Content-Type: application/x-www-form-urlencoded");
     client.print("Content-Length: ");
