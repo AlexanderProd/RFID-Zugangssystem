@@ -39,20 +39,9 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
-    echo '<table class="table table-striped table-bordered table-hover">';
-    echo "<tr><th>ID</th><th>Name</th><th>Datum</th><th>Uhrzeit</th></tr>";
     while($row = mysqli_fetch_assoc($result)) {
-        echo "<tr><td>";
-        echo $row["id"];
-        echo "</td><td>";
-        echo $row["firstName"] . " " . $row["lastName"];
-        echo "</td><td>";
-        echo $row["date"];
-        echo "</td><td>";
-        echo $row["time"];
-        echo "</td></tr>";
+        echo "id: " . $row["id"]. " - Name: " . $row["firstName"]. " " . $row["lastName"]. " " . $row["date"]. " " . $row["time"]. "<br>";
     }
-    echo "</table>";
 } else {
     echo "0 results";
 }
