@@ -1,12 +1,18 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8">
   <title>Angemeldete Personen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
 </head>
 <body>
 
+<div class="container">
 <input id="input" placeholder="dd.mm.yyyy">
 <button onclick="action()">GO</button>
 </br>
@@ -39,10 +45,10 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
-    echo '<table class="table table-striped table-bordered table-hover">';
-    echo "<tr><th>ID</th><th>Name</th><th>Datum</th><th>Uhrzeit</th></tr>";
+    echo '<table class="u-full-width">';
+    echo "<thead><tr><th>ID</th><th>Name</th><th>Datum</th><th>Uhrzeit</th></tr></thead>";
     while($row = mysqli_fetch_assoc($result)) {
-        echo "<tr><td>";
+        echo "<tbody><tr><td>";
         echo $row["id"];
         echo "</td><td>";
         echo $row["firstName"] . " " . $row["lastName"];
@@ -50,7 +56,7 @@ if (mysqli_num_rows($result) > 0) {
         echo $row["date"];
         echo "</td><td>";
         echo $row["time"];
-        echo "</td></tr>";
+        echo "</td></tr></tbody>";
     }
     echo "</table>";
 } else {
@@ -59,7 +65,7 @@ if (mysqli_num_rows($result) > 0) {
 
 mysqli_close($conn);
 ?>
-
+</div>
 
 <script>
 function action(){
