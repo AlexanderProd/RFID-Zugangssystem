@@ -1,16 +1,3 @@
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HTML5-Seite mit Grundstruktur</title>
-</head>
-<body>
-
-<input id="input" placeholder="dd.mm.yyyy">
-<button onclick="action()">GO</button>
-</br>
-
 <?php
 include("time.php");
 
@@ -51,15 +38,3 @@ if (mysqli_num_rows($result) > 0) {
 
 mysqli_close($conn);
 ?>
-
-
-<script>
-function action(){
-  var input = document.getElementById('input').value;
-  input = encodeURIComponent(input);
-  window.location.href = "datepicker.php?date=" + input;
-  console.log(input);
-}
-</script>
-</body>
-</html>

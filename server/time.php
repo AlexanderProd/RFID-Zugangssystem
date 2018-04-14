@@ -1,7 +1,5 @@
 <?php
 function serverTime($string = null){
-  $timezone = date_default_timezone_get();
-  echo "The current server timezone is: " . $timezone . "<br/>";
   $date = date('d.m.Y');
   $time = date('H:i:s', time());
   $dateTime = date('d.m.Y H:i:s', time());
@@ -15,6 +13,7 @@ function serverTime($string = null){
   }
 }
 
-$date = serverTime(time);
-echo $date . "<br/>";
+$timezone = date_default_timezone_get();
+echo "The current server timezone is: " . $timezone . "<br/>";
+echo serverTime() . "<br/>";
 ?>

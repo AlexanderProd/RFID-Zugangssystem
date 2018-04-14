@@ -17,28 +17,15 @@ if (!$conn) {
 echo "Connected successfully" . "<br/>";
 
 //Values getting send to server
-$id = $_POST["value1"];
-$date = serverTime(date);
-$time = serverTime(time);
-
-//Variables
-$firstName = "";
-$lastName = "";
-
-//Retrieve First and Last Name from DB depending on ID
-$query = "SELECT * FROM `acc_information` WHERE id = '$id';";
-$result = mysqli_query($conn, $query);
-if (!$result) exit("The query did not succeded");
-else {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $firstName = $row['firstName'];
-				$lastName = $row['lastName'];
-    }
-}
+$var1=$_POST["value1"];
+$var2=$_POST["value2"];
+$var3=$_POST["value3"];
+$var4=serverTime(date);
+$var5=serverTime(time);
 
 // Insert Values into MySQL Database
 $query = "INSERT INTO `logins` (`id`,`firstName`, `lastName` , `date` , `time`)
-VALUES ('".$id."','".$firstName."','".$lastName."','".$date."','".$time."')";
+VALUES ('".$var1."','".$var2."','".$var3."','".$var4."','".$var5."')";
 
 // Debugging Feedback
 if (mysqli_query($conn, $query)) {

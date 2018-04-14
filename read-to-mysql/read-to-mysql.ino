@@ -2,10 +2,10 @@
 #include <MFRC522.h>
 #include <ESP8266WiFi.h>
 
-//const char* ssid     = "FRITZ!Box 7430 BZ";
-//const char* password = "56330553737990937936";
-const char* ssid     = "Alexanders iPhone";
-const char* password = "123test456";
+const char* ssid     = "FRITZ!Box 7430 BZ";
+const char* password = "56330553737990937936";
+//const char* ssid     = "Alexanders iPhone";
+//const char* password = "123test456";
 
 const char* host = "alexander-productions.de";
 
@@ -49,7 +49,7 @@ void setup() {
 int value = 0;
 
 void loop() {
-  delay(500); // Reading Speed (lower value = faster read but might write multiple entries into db) 
+  delay(500); // Reading Speed (lower value = faster read but might write multiple entries into db)
   ++value;
 
   //Serial.print("connecting to ");
@@ -172,7 +172,7 @@ void loop() {
     return;
   } else {
     Serial.println("connection successful");
-    client.println("POST /mysql/post2.php HTTP/1.1");
+    client.println("POST /mysql/post.php HTTP/1.1");
     client.println("Host: alexander-productions.de"); // SERVER ADDRESS HERE TOO
     client.println("Content-Type: application/x-www-form-urlencoded");
     client.print("Content-Length: ");
