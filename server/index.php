@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['userid'])) {
+  echo '<script type="text/javascript">window.open("login.php","_self")</script>';
+  die();
+}?>
+
 <!doctype html>
 <html lang="de">
 <head>
@@ -7,13 +14,22 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
 integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
+<link href="css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
 
-<div class="container" style="margin-top: 50px;">
-  <h4>Datum:</h4>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">RFID Logins</a>
+  <input class="form-control form-control-dark w-100" id="searchaBar" type="text" placeholder="Nach Tag Suchen (dd.mm.yyyy)" aria-label="Suchen" onblur="searchaBar()">
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="logout.php">Abmelden</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container" style="margin-top: 100px;">
   <form>
     <div class="form-row">
       <div class="col-sm-3 my-1">
@@ -48,14 +64,16 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 echo "Connected successfully";
-echo "<br/></p>";
+echo "</p><br/>";
 
 $sql = "SELECT id, firstName, lastName, date, time FROM logins WHERE date = '$dateTransferred'";
 $result = mysqli_query($conn, $sql);
 
+echo "<h4>Logins für $dateTransferred</h4>";
+
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
-    echo '<table class="table table-striped table-sm">';
+    echo '<div class="table-responsive"><table class="table table-striped table-sm">';
     echo "<thead><tr><th>ID</th><th>Name</th><th>Datum</th><th>Uhrzeit</th></tr></thead>";
     while($row = mysqli_fetch_assoc($result)) {
         echo "<tbody><tr><td>";
@@ -68,7 +86,7 @@ if (mysqli_num_rows($result) > 0) {
         echo $row["time"];
         echo "</td></tr></tbody>";
     }
-    echo "</table>";
+    echo "</table></div>";
 } else {
     echo "0 results";
 }
@@ -90,6 +108,15 @@ function goButton(){
   input = encodeURIComponent(input);
   window.location.href = "index.php?date=" + input;
   console.log(input);
+}
+
+function searchaBar(){
+  var input = document.getElementById('searchaBar').value;
+  if (input != ""){
+    input = encodeURIComponent(input);
+    window.location.href = "index.php?date=" + input;
+    console.log(input);
+  }
 }
 </script>
 </body>
