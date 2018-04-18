@@ -21,7 +21,7 @@ integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJ
 
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">RFID Logins</a>
-  <input class="form-control form-control-dark w-100" id="searchaBar" type="text" placeholder="Nach Tag Suchen (dd.mm.yyyy)" aria-label="Suchen" onblur="searchaBar()">
+  <input class="form-control form-control-dark w-100" id="searchBar" type="text" placeholder="Nach Tag Suchen (dd.mm.yyyy)" aria-label="Suchen" onblur="searchBar()">
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
       <a class="nav-link" href="logout.php">Abmelden</a>
@@ -29,8 +29,8 @@ integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJ
   </ul>
 </nav>
 
-<div class="container" style="margin-top: 100px;">
-  <form>
+<div class="container" style="margin-top: 75px;">
+  <!--<form>
     <div class="form-row">
       <div class="col-sm-3 my-1">
         <input id="input" class="form-control mb-2" placeholder="dd.mm.yyyy">
@@ -39,7 +39,7 @@ integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJ
         <button onclick="goButton()" type="button" class="btn btn-outline-secondary">GO</button>
       </div>
     </div>
-  </form>
+  </form>-->
   </br>
 
 <?php
@@ -110,8 +110,15 @@ function goButton(){
   console.log(input);
 }
 
-function searchaBar(){
-  var input = document.getElementById('searchaBar').value;
+const node = document.getElementById('searchBar');
+node.addEventListener('keydown', function onEvent(event) {
+  if (event.key === "Enter"){
+    searchBar();
+  }
+});
+
+function searchBar(){
+  var input = document.getElementById('searchBar').value;
   if (input != ""){
     input = encodeURIComponent(input);
     window.location.href = "index.php?date=" + input;

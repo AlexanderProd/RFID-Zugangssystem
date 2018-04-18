@@ -79,7 +79,7 @@ body {
 <body class="text-center">
 
   <form class="form-signin" action="?login=1" method="post">
-    <h1 class="h3 mb-3 font-weight-normal">Melden Sie sich an</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Bitte einloggen</h1>
     <label for="inputEmail" class="sr-only">Email Addresse</label>
     <input type="email" class="form-control" placeholder="Email Addresse" name="email" required autofocus>
     <label for="inputPassword" class="sr-only">Passwort</label>
