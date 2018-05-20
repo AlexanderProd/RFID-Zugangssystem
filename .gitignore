@@ -4,3 +4,5 @@ FSA6ST4HXB3V05E.ino
 .gitignore
 .gitattributes
 .htaccess
+credentials.php
+credentials.h

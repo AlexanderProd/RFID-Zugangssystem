@@ -1,11 +1,6 @@
 <?php
+include("credentials.php")
 include("time.php");
-
-//MySQL server login credentials
-$servername = "bernd-mysql.php-friends.de";
-$username = "521_admin";
-$password = "Cb&0fv";
-$dbname = "521_rfid_test";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
