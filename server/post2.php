@@ -1,5 +1,5 @@
 <?php
-include("credentials.php")
+include("credentials.php");
 include("time.php");
 
 // Create connection

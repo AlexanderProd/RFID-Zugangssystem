@@ -57,13 +57,8 @@ $(function() {
 <input type="text" id="myText" class="form-control" data-toggle="datepicker" onblur="myFunction()">
 
 <?php
-echo "<p>";
+include("credentials.php");
 include("time.php");
-
-$servername = "bernd-mysql.php-friends.de";
-$username = "521_admin";
-$password = "Cb&0fv";
-$dbname = "521_rfid_test";
 
 $dateTransferred = htmlspecialchars($_GET["date"]);
 if (empty($dateTransferred)){
@@ -74,6 +69,7 @@ if (empty($dateTransferred)){
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // Check connection
+echo "<p>";
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }

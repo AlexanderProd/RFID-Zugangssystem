@@ -1,6 +1,8 @@
 <?php
+include("credentials.php");
+
 session_start();
-$pdo = new PDO('mysql:host=bernd-mysql.php-friends.de;dbname=521_rfid_test', '521_admin', 'Cb&0fv');
+$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
 if(isset($_GET['login'])) {
     $email = $_POST['email'];
