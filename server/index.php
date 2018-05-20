@@ -1,4 +1,10 @@
 <?php
+if($_SERVER["HTTPS"] != "on")
+{
+    header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+    exit();
+}
+
 session_start();
 if(!isset($_SESSION['userid'])) {
   echo '<script type="text/javascript">window.open("login.php","_self")</script>';
@@ -15,13 +21,31 @@ if(!isset($_SESSION['userid'])) {
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
 integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 <link href="css/dashboard.css" rel="stylesheet">
+<link href="css/datepicker.css" rel="stylesheet">
+
+<script src="js/datepicker.js"></script>
+<script>
+$(function() {
+  $('[data-toggle="datepicker"]').datepicker({
+    autoHide: true,
+    zIndex: 2048,
+    format: 'dd.mm.yyyy',
+    language: 'de-DE',
+  });
+});
+</script>
+<script>
+  function myFunction() {
+    var y = $('[data-toggle="datepicker"]').datepicker('getDate', true);
+    console.log(y);
+  }
+</script>
 </head>
 
 <body>
-
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">RFID Logins</a>
-  <input class="form-control form-control-dark w-100" id="searchBar" type="text" placeholder="Nach Tag Suchen (dd.mm.yyyy)" aria-label="Suchen" onblur="searchBar()">
+  <input class="form-control form-control-dark w-100" id="searchBar" type="text" placeholder="Nach Tag Suchen" aria-label="Suchen" onblur="searchBar()">
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
       <a class="nav-link" href="logout.php">Abmelden</a>
@@ -30,17 +54,7 @@ integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJ
 </nav>
 
 <div class="container" style="margin-top: 75px;">
-  <!--<form>
-    <div class="form-row">
-      <div class="col-sm-3 my-1">
-        <input id="input" class="form-control mb-2" placeholder="dd.mm.yyyy">
-      </div>
-      <div class="col-auto my-1">
-        <button onclick="goButton()" type="button" class="btn btn-outline-secondary">GO</button>
-      </div>
-    </div>
-  </form>-->
-  </br>
+<input type="text" id="myText" class="form-control" data-toggle="datepicker" onblur="myFunction()">
 
 <?php
 echo "<p>";
@@ -102,14 +116,9 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
 integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-<script>
-function goButton(){
-  var input = document.getElementById('input').value;
-  input = encodeURIComponent(input);
-  window.location.href = "index.php?date=" + input;
-  console.log(input);
-}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 
+<script>
 const node = document.getElementById('searchBar');
 node.addEventListener('keydown', function onEvent(event) {
   if (event.key === "Enter"){
